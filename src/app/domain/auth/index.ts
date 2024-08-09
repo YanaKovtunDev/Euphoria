@@ -14,6 +14,8 @@ export default class Auth {
   }
 
   @HttpCode(201)
-  @Post("signUp")
-  async signUp() {}
+  @Post("/signUp")
+  async signUp(@Body() body: User) {
+    return this.service.signUp(body);
+  }
 }
