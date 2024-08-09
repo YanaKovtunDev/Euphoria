@@ -1,10 +1,12 @@
 require("dotenv").config();
+import { Database } from "./Database";
 import { Tcp } from "./Tcp";
 
 export class App {
   private static instance: App;
 
   private tcp = new Tcp();
+  private database = new Database();
 
   constructor() {
     if (!App.instance) App.instance = this;
@@ -13,8 +15,9 @@ export class App {
   }
 
   async init() {
-    const { tcp } = this;
+    const { tcp, database } = this;
 
+    await database.init();
     await tcp.init();
   }
 }
