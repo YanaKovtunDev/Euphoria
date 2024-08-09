@@ -19,6 +19,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "reflect-metadata": "^0.2.2",
+    "mongoose": "^8.5.2",
     "routing-controllers": "^0.10.4"
   },
   "devDependencies": {
