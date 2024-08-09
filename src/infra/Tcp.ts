@@ -2,6 +2,8 @@ import express from "express";
 
 import { useExpressServer } from "routing-controllers";
 
+import controllers from "app/domain";
+
 const { PORT } = process.env;
 export class Tcp {
   private static instance: Tcp;
@@ -20,8 +22,12 @@ export class Tcp {
 
     useExpressServer(server, {
       routePrefix,
+      controllers,
       cors: true,
       defaultErrorHandler: true,
+      validation: {
+        validationError: { target: false, value: false },
+      },
     });
 
     return new Promise<boolean>((resolve: (res: boolean) => void) => {

@@ -1,4 +1,7 @@
 require("dotenv").config();
+
+import "reflect-metadata";
+
 import { Tcp } from "./Tcp";
 
 export class App {
