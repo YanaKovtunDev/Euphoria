@@ -1,4 +1,7 @@
 require("dotenv").config();
+
+import "reflect-metadata";
+
 import { Database } from "./Database";
 import { Tcp } from "./Tcp";
 
