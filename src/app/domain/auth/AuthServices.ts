@@ -14,7 +14,7 @@ export default class AuthServices {
     try {
       const userData = await User.findOne({ email });
 
-      if (!userData) throw new BadRequestError("Incorrect email or password!");
+      if (!userData) throw new BadRequestError("Incorrect email!");
 
       const isCorrectPassword = await bcrypt.compare(
         password,
