@@ -7,7 +7,7 @@ import { IAuth } from "types/auth";
 import { createToken } from "utils/token";
 import { CustomError } from "utils/customError";
 
-const SALT = 10;
+const { SALT } = process.env;
 
 export default class AuthServices {
   async signIn({ email, password }: IAuth) {
@@ -40,7 +40,7 @@ export default class AuthServices {
 
       if (existedUser) throw new CustomError(409, "User already exists!");
 
-      const hashedPassword = await bcrypt.hash(password, SALT);
+      const hashedPassword = await bcrypt.hash(password, SALT || 10);
 
       User.create({ email, password: hashedPassword });
 
