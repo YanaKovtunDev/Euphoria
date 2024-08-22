@@ -3,6 +3,7 @@ import express from "express";
 import { useExpressServer } from "routing-controllers";
 
 import controllers from "app/domain";
+import { HttpErrorHandler } from "middlewares/errorHandler";
 
 const { PORT } = process.env;
 export class Tcp {
@@ -24,7 +25,8 @@ export class Tcp {
       routePrefix,
       controllers,
       cors: true,
-      defaultErrorHandler: true,
+      defaultErrorHandler: false,
+      middlewares: [HttpErrorHandler],
       validation: {
         validationError: { target: false, value: false },
       },
